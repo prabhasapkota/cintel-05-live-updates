@@ -1,14 +1,20 @@
 # Task 5 start
 #Purpose: Illustrate addition of continuous information. 
 
+
+# Standard Library
 import asyncio
 import os
-import pandas as pd
-from random import randint
-import yfinance as yf
-from collections import deque
 from datetime import datetime
 from pathlib import Path
+from random import randint
+
+# External Packages
+import pandas as pd
+import yfinance as yf
+from collections import deque
+
+# Local Imports
 from fetch import fetch_from_url
 from util_logger import setup_logger
 
