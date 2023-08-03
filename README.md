@@ -1,8 +1,8 @@
 # Continuous Intelligence App
 
-- Repository: [cintel-05-live-updates](https://github.com/denisecase/cintel-05-live-updates)
-- Website: [cintel-05-live-updates](https://denisecase.github.io/cintel-05-live-updates/)
-- Author: [Denise Case](https://github.com/denisecase)
+- Repository: [cintel-05-live-updates](https://github.com/prabhasapkota/cintel-05-live-updates)
+- Website: [cintel-05-live-updates](https://prabhasapkota.github.io/cintel-05-live-updates/)
+- Author: [Prabha Sapkota](https://github.com/denisecase)
 
 -----
 
@@ -47,7 +47,7 @@ Create a virtual environment named .venv in the current directory.
 Verify that a .venv folder was created after running the command. 
 
 ```shell
-python -m venv .venv
+python3 -m venv .venv
 ```
 
 If VS Code asks to use it as the workspace folder, select Yes.
@@ -58,7 +58,7 @@ Run the following command to activate the virtual environment we just created.
 Verify that the PowerShell prompt now shows (.venv) at the beginning of the line.
 
 ```shell
-.venv\Scripts\activate
+source .venv/bin/
 ```
 
 ## Prepare the Environment
@@ -100,7 +100,7 @@ before running the app again.
 
 Add and customize .github/workflows/deploy.yml.
 Login to [shinyapps.io](https://www.shinyapps.io/) then Account / Tokens and add 3 repo secrets.
-See the earlier [SHINYAPPS.md](https://github.com/denisecase/cintel-02-app/blob/main/SHINYAPPS.md) for details.
+See the earlier [SHINYAPPS.md](https://github.com/prabhasapkota/cintel-02-app/blob/main/SHINYAPPS.md) for details.
 
 - Name: SHINYAPPS_ACCOUNT, Secret: Paste shinyapps.io account name
 - Name: SHINYAPPS_TOKEN, Secret: (paste token )
