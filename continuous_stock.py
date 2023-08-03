@@ -1,4 +1,5 @@
 # Task 5 start
+#Purpose: Illustrate addition of continuous information. 
 
 import asyncio
 import os
