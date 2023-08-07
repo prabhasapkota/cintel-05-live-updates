@@ -4,8 +4,6 @@ Purpose: Illustrate addition of continuous information.
 This is a simple example that uses a deque to store the last 15 minutes of
 temperature readings for three locations.
 
-The data is updated every minute.
-
 Continuous information might also come from a database, a data lake, a data warehouse, or a cloud service.
 
 ----------------------------
