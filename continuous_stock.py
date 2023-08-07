@@ -18,11 +18,12 @@ from collections import deque
 from fetch import fetch_from_url
 from util_logger import setup_logger
 
+
 #Setup for the logger
 logger, log_filename = setup_logger(__file__)
 
 def lookup_ticker(company):
-    stocks_dictionary = {
+    company_dictionary = {
         "Tesla Inc": "TSLA",
         "General Motors Company": "GM",
         "Toyota Motor Corporation": "TM",
@@ -30,26 +31,27 @@ def lookup_ticker(company):
         "Honda Motor Co": "HMC",
     }
     
-    ticker = stocks_dictionary[company]
+    ticker = company_dictionary[company]
     return ticker
 
 async def get_stock_price(ticker):
-    logger.info("Calling get_stock_price for {ticker}}")
-    yf_url = f"https://query1.finance.yahoo.com/v7/finance/options/{ticker}"
-    logger.info(f"Calling yf_url to for: {yf_url}")
-    yf_results = await fetch_from_url(yf_url, "json")
-    logger.info(f"Data for {ticker}: {yf_results}")
-    # stock = yf.Ticker(ticker) # Get the stock data
-    # price = stock.history(period="1d").tail(1)["Close"][0] # Get the closing price
-    price = yf_results.data["optionChain"]["result"][0]["quote"]["regularMarketPrice"]
+    logger.info(f"Calling get_stick_price for {ticker}")
+    stock_api_url = f"https://query1.finance.yahoo.com/v7/finance/options/{ticker}"
+    logger.info(f"Calling fetch_from_url for {stock_api_url}")
+    result = await fetch_from_url(stock_api_url, "json")
+    logger.info(f"Data for {ticker}: {result.data}")
+    price = result.data["optionChain"]["result"][0]["quote"]["regularMarketPrice"]
+    #price = randint(1, 100)
     return price
 
+
+    
 def init_csv_file(file_path):
     df_empty = pd.DataFrame(
         columns=["Company", "Ticker", "Time", "Price"]
     )
     df_empty.to_csv(file_path, index=False)
-
+    
 async def update_csv_stock():
     """Update the CSV file with the latest location information."""
     logger.info("Calling update_csv_stock")
@@ -83,7 +85,7 @@ async def update_csv_stock():
         for _ in range(num_updates):  # To get num_updates readings
             for company in companies:
                 ticker = lookup_ticker(company)
-                new_price = await get_stock_price(ticker)
+                new_price = get_stock_price(ticker)
                 time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time
                 new_record = {
                     "Company": company,
